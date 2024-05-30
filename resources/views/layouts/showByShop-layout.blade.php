@@ -10,9 +10,7 @@
 </head>
 <body class="h-full ">
     <x-navbar></x-navbar>
-    <x-header></x-header>
     <x-banner :user="$user"></x-banner>
-    <x-nav-links-catalog :items="$items" :categories="$categories"></x-nav-links-catalog>
-    <x-shop-list :shops="$shops"></x-shop-list>
+    <x-nav-links-catalog-by-shop :shop="$shop" :items="$items" :shops="$shops" :categories="$categories"></x-nav-links-catalog-by-shop>
 </body>
 </html>

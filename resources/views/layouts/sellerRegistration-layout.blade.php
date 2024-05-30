@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-screen bg-gray-100">
+<html lang="en" class="h-full bg-white">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,6 @@
 </head>
 <body class="h-full ">
     <x-navbar></x-navbar>
-    <x-header></x-header>
-    <x-banner :user="$user"></x-banner>
-    <x-nav-links-catalog :items="$items" :categories="$categories"></x-nav-links-catalog>
-    <x-shop-list :shops="$shops"></x-shop-list>
+    <x-seller-form :user="$user"></x-seller-form>
 </body>
 </html>

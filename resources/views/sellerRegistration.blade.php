@@ -1,0 +1,1 @@
+@extends('layouts.sellerRegistration-layout')

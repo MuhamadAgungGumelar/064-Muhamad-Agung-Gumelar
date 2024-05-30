@@ -33,7 +33,7 @@ class AuthController extends Controller
         $request->session()->put('userId', $user->id);
         $request->session()->put('role', "user");
 
-        return redirect()->route("dashboard");
+        return redirect()->route("dashboardIndex");
     }
 
     public function logout(Request $request){
@@ -58,9 +58,10 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->role_id = 1;
         $user->save();
 
-        return redirect()->route("auth.login");
+        return redirect()->route("login");
     }
 
     public function forgotPasswordPage(){

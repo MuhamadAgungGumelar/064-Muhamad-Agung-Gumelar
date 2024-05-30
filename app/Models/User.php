@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\app\Models\Role;
+use Illuminate\app\Models\Shop;
 
 class User extends Authenticatable
 {
@@ -21,6 +24,16 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function roles(): BelongsTo 
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function shops(): BelongsTo 
+    {
+        return $this->belongsTo(Shop::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
