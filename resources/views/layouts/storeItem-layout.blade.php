@@ -6,10 +6,16 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <title>Document</title>
 </head>
-<body class="h-full ">
-    <x-navbar></x-navbar>
-    <x-store-item-form :shop="$shop" :categories="$categories"></x-store-item-form>
+<body class="flex justify-center h-screen max-w-screen">
+    <x-sidebar-dashboard :user="$user" :shop="$shop"></x-sidebar-dashboard>
+    <div class="relative bottom-12 w-fit sm:w-full md:left-1/2 xl:left-1/3 lg:-top-10">
+        <x-header></x-header>
+        <x-store-item-form :shop="$shop" :categories="$categories"></x-store-item-form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

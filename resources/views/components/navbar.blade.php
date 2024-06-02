@@ -77,8 +77,8 @@
                 </svg>
               </div>
               <div class="flex-auto">
-                <a href="#" class="block font-semibold text-gray-900">
-                  Analytics
+                <a href="" class="block font-semibold text-gray-900">
+                  Cart
                   <span class="absolute inset-0"></span>
                 </a>
                 <p class="mt-1 text-gray-600">Get a better understanding of your traffic</p>
@@ -159,7 +159,7 @@
       </div>
 
       <a href="#home" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
-      <a href="#blog" class="text-sm font-semibold leading-6 text-gray-900">Blog</a>
+      <a href="" class="text-sm font-semibold leading-6 text-gray-900">Cart</a>
       <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">

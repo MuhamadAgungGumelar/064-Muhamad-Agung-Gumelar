@@ -8,7 +8,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\DashboardController;
-use App\Models\User;
+use App\Http\Controllers\TransactionController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -63,16 +63,41 @@ Route::get('/getSession', function () {
 
 Route::controller(SellerController::class)->group(function()
 {
-    Route::get('/sellerRegistration/{name}', "sellerRegistrationPage")->name("sellerRegistrationPage");
+    Route::get('/sellerRegistration/user/{name}', "sellerRegistrationPage")->name("sellerRegistrationPage")->middleware(Authenticate::class);
 
-    Route::post('/sellerRegistration/{name}', "sellerRegistration")->name("sellerRegistration");
+    Route::post('/sellerRegistration/user/{name}', "sellerRegistration")->name("sellerRegistration")->middleware(Authenticate::class);
 
-    Route::get('/storeItem/{name}', "storeItemPage")->name("storeItemPage");
+    Route::get('/storeItem/shop/{name}', "storeItemPage")->name("storeItemPage")->middleware(Authenticate::class);
 
-    Route::post('/storeItem/{name}', "storeItem")->name("storeItem");
+    Route::post('/storeItem/shop/{name}', "storeItem")->name("storeItem")->middleware(Authenticate::class);
 
-    Route::get('/storeCategory', "storeCategoryPage")->name("storeCategoryPage");
+    Route::get('/storeCategory', "storeCategoryPage")->name("storeCategoryPage")->middleware(Authenticate::class);
 
-    Route::post('/storeCategory', "storeCategory")->name("storeCategory");
+    Route::post('/storeCategory', "storeCategory")->name("storeCategory")->middleware(Authenticate::class);
 
+});
+
+Route::controller(TransactionController::class)->group(function()
+{
+    Route::get('/addToCart/item/{item_name}', "addToCart")->name("addToCart")->middleware(Authenticate::class);
+
+    Route::get('/viewCart/user/{name}', "viewCart")->name("viewCart")->middleware(Authenticate::class);
+
+    Route::get('/minusItem/item/{name}', "minusItem")->name("minusItem")->middleware(Authenticate::class);
+
+    Route::get('/plusItem/item/{name}', "plusItem")->name("plusItem")->middleware(Authenticate::class);
+
+    Route::get('/checkout/user/{name}', "checkout")->name("checkout")->middleware(Authenticate::class);
+
+    Route::get('/viewTransaction/user/{name}', "viewTransaction")->name("viewTransaction")->middleware(Authenticate::class);
+
+    Route::get('/viewTransactionDetail/user/{name}/transaction/{transaction_id}', "viewTransactionDetail")->name("viewTransactionDetail")->middleware(Authenticate::class);
+
+    Route::get('/shopTransactionPage/shop/{name}', "shopTransactionPage")->name("shopTransactionPage")->middleware(Authenticate::class);
+
+    Route::get('/shopTransactionAccept/shop/{name}/transaction/{transaction_id}', "shopTransactionAccept")->name("shopTransactionAccept")->middleware(Authenticate::class);
+
+    Route::get('/shopTransactionReject/shop/{name}/transaction/{transaction_id}', "shopTransactionReject")->name("shopTransactionReject")->middleware(Authenticate::class);
+
+    Route::get('/shopCatalog/shop/{name}', "shopCatalog")->name("shopCatalog")->middleware(Authenticate::class);
 });

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Category;
+use App\Models\Transaction;
+use App\Models\Cart;
 
 class DashboardController extends Controller
 {
@@ -14,6 +16,18 @@ class DashboardController extends Controller
         $items = Item::all();
         $shops = Shop::all();
         $categories = Category::all();
+        
+        $user_id = session()->get('user_id');
+        
+        $shop = Shop::where('user_id', $user_id)->first();
+
+        
+        if($shop != null) {
+            $transactionShopCount = Transaction::where('shop_id', $shop->id)->count();
+            $transactionShopCount = session()->put('transactionShopCount', $transactionShopCount);
+            return view('dashboard', compact('items', 'shops', 'categories', 'shop'));
+        }
+
         return view('dashboard', compact('items', 'shops', 'categories'));
     }
 
@@ -23,7 +37,11 @@ class DashboardController extends Controller
         $items = Item::where('categories_id', $category->id)->get();
         $categories = Category::all();
         $shops = Shop::all();
-        return view('dashboard', compact('items', 'categories', 'category', 'shops'));
+
+        $user_id = session()->get('user_id');
+
+        $shop = Shop::where('user_id', $user_id)->first();
+        return view('dashboard', compact('items', 'categories', 'category', 'shops', 'shop'));
     }
 
     public function showByShop($shop_name)

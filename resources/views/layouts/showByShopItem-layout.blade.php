@@ -9,8 +9,13 @@
     <title>Document</title>
 </head>
 <body class="h-full ">
-    <x-navbar></x-navbar>
-    <x-banner :user="$user"></x-banner>
-    <x-nav-links-catalog-by-shop-item :shop="$shop" :items="$items" :shops="$shops" :categories="$categories"></x-nav-links-catalog-by-shop-item>
+    <x-sidebar-dashboard :user="$user" :shop="$shop"></x-sidebar-dashboard>
+    <div class="relative bottom-12 left-28 lg:p-16 md:left-48 top-4 ">
+        <x-header></x-header>
+        <x-nav-links-catalog-by-shop-item :shop="$shop" :items="$items" :shops="$shops" :categories="$categories"></x-nav-links-catalog-by-shop-item>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    
 </body>
 </html>

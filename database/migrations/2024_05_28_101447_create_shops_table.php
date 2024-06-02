@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
+            $table->string('description');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained(
                 table: 'users',
                 indexName: 'users_shops_id'
             );
+            $table->timestamps();
         });
     }
 

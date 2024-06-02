@@ -9,7 +9,12 @@
     <title>Document</title>
 </head>
 <body class="h-full ">
-    <x-navbar></x-navbar>
-    <x-store-category-form></x-store-category-form>
+    <x-sidebar-dashboard :user="$user" :shop="$shop"></x-sidebar-dashboard>
+    <div class="relative bottom-12 left-28 lg:p-16 md:left-48 top-4 lg:-top-10">
+        <x-header></x-header>
+        <x-store-category-form></x-store-category-form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('quantity');
             $table->decimal('price', 8, 2);
-            $table->timestamps();
+            $table->string('image')->nullable();
             $table->foreignId('shop_id')->constrained(
                 table: 'shops',
                 indexName: 'items_shops_id'
@@ -25,6 +25,7 @@ return new class extends Migration
                 table: 'categories',
                 indexName: 'items_categories_id'
             );
+            $table->timestamps();
         });
     }
 

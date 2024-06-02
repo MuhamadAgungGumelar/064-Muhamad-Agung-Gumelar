@@ -28,10 +28,12 @@ class AuthController extends Controller
             return redirect()->back()->with("error", "Password Invalid!!"); 
         }
 
+        $role = $user->role_id;
+
         $request->session()->regenerate();
         $request->session()->put('isLogged', true);
-        $request->session()->put('userId', $user->id);
-        $request->session()->put('role', "user");
+        $request->session()->put('user_id', $user->id);
+        $request->session()->put('role_id', $role);
 
         return redirect()->route("dashboardIndex");
     }

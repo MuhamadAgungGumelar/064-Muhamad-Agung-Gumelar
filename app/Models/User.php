@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\app\Models\Role;
-use Illuminate\app\Models\Shop;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Role;
+use App\Models\Shop;
+use App\Models\Cart;
+use App\Models\Transaction;
 
 class User extends Authenticatable
 {
@@ -25,14 +28,24 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function roles(): BelongsTo 
+    public function role(): BelongsTo 
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function shops(): BelongsTo 
+    public function shop(): BelongsTo 
     {
         return $this->belongsTo(Shop::class);
+    }
+
+    public function cart(): HasOne
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function transaction(): HasOne
+    {
+        return $this->hasOne(Transaction::class);
     }
 
     /**
